@@ -9,6 +9,24 @@ body {
   bottom: 0;
 }
 
+.score {
+  text-align: center;
+  color: #666;
+  margin-top: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.playAgain {
+  margin-left: 43.5%;
+  margin-right: 43.5%;
+  border-radius: 5px;
+  background: rgb(10, 169, 243);
+  color: #fff;
+  height: 30px;
+  width: 150px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 .cactus {
   position: absolute;
   width: 60px;
@@ -23,4 +41,23 @@ body {
   color: #666;
   margin-top: 50px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes slideRight {
+  from {
+    background-position: 70000%;
+  }
+  to {
+    background-position: 0;
+  }
+}
+
+.background {
+  position: absolute;
+  bottom: 0;
+  background-image: url("./img/background.png");
+  background-repeat: repeat-x;
+  animation: slideRight 1100s infinite linear;
+  width: 100%;
+  height: 200px;
 }

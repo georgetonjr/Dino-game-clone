@@ -1,6 +1,10 @@
 const dino = document.querySelector(".dino");
 const background = document.querySelector(".background");
+const score = document.querySelector(".score");
 
+let gameOver = false;
+let pontuacao = 0;
+let speed = 20;
 let isJumping = false;
 let position = 0;
 
@@ -54,14 +58,31 @@ function createCactus() {
       background.removeChild(cactus);
     } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
       clearInterval(leftInterval);
-      document.body.innerHTML = "<h1 class='game-over'>Fim de jogo!!</h1>";
+      gameOver = true;
+      document.body.innerHTML = `<h1 class='game-over'>Fim de jogo!!</h1>  
+      <h2 class='score'>Score: ${pontuacao}</h2>
+      <button class='playAgain' onclick="playAgain()">Play again</button>`;
     } else {
       cactusPosition -= 10;
       cactus.style.left = cactusPosition + "px";
+      if (!gameOver) {
+        addScore();
+      }
     }
-  }, 20);
+  }, speed);
 
   setTimeout(createCactus, randomTime);
+}
+
+function addScore() {
+  pontuacao += 1; //soma mais há pontuação a cada passa do
+  speed -= 0.001; //aumenta a velocidade conforme o score aumenta
+
+  score.innerHTML = `Score: ${pontuacao}`;
+}
+
+function playAgain() {
+  location.reload();
 }
 
 createCactus();
